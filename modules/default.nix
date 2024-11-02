@@ -1,6 +1,7 @@
 { ... }:
 
 {
-  imports = [ ./alacritty.nix ./emacs.nix ./nvim.nix ./zoxide.nix ];
+  imports =
+    [ ./alacritty.nix ./emacs.nix ./nvim.nix ./zoxide.nix ./shell-tooling.nix ];
 
 }
