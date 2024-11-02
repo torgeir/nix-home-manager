@@ -1,6 +1,6 @@
-{ config, stdenv, pkgs, ... }:
+{ config, pkgs, ... }:
 let
-  emacs = if stdenv.isDarwin then
+  emacs = if pkgs.stdenv.isDarwin then
     pkgs.emacs29.overrideAttrs (old: {
       # inspiration https://github.com/noctuid/dotfiles/blob/30f615d0a8aed54cb21c9a55fa9c50e5a6298e80/nix/overlays/emacs.nix
       patches = (old.patches or [ ]) ++ [
