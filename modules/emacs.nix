@@ -46,6 +46,29 @@ in {
 
     xdg.enable = true;
     home = {
+      packages = with pkgs; [
+        # mu4e+mbsync
+        mu
+        isync
+        msmtp
+
+        #webp support
+        libwebp
+
+        # emacs deps
+        nodejs_20
+        nodePackages.prettier
+        nodePackages.bash-language-server
+        nodePackages.yaml-language-server
+        nodePackages.ts-node
+        nodePackages.typescript
+        nodePackages.typescript-language-server
+        shellcheck
+
+        babashka
+        clojure
+        clojure-lsp
+      ];
       # put doom and custom .doom.d/bin/ on path
       sessionPath = [
         "${config.xdg.configHome}/emacs/bin"
