@@ -49,6 +49,7 @@ in {
       '';
       ".config/alacritty/alacritty-toggle-appearance".onChange = ''
         #!/usr/bin/env bash
+        cd ${config.xdg.configHome}/alacritty/
         if [ ! -f alacritty.toml ]; then
           cp -f alacritty-dark.toml alacritty.toml
         fi
