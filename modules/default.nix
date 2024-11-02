@@ -1,8 +1,9 @@
 { lib, ... }:
 
 {
-  imports = [ ./emacs.nix ];
+  imports = [ ./emacs.nix ./nvim.nix ];
 
-  options.programs.doomemacs.enable =
+  # TODO this is not used yet, see nvim for how to do it
+  options.programs.t-doomemacs.enable =
     lib.mkEnableOption "Enable doom emacs configuration.";
 }
