@@ -1,4 +1,4 @@
-{ dotfiles, config, lib, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 let
   cfg = config.programs.t-terminal.alacritty;
@@ -14,7 +14,7 @@ in {
   options.programs.t-terminal.alacritty.package =
     lib.mkPackageOption pkgs "alacritty" {
       default = "alacritty";
-      example = "[ pkgs.unstable.alacritty ]";
+      example = "pkgs.unstable.alacritty";
     };
 
   config = lib.mkIf cfg.enable {
