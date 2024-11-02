@@ -40,14 +40,7 @@ in {
       ".config/alacritty/alacritty-toggle-appearance".text = ''
         #!/usr/bin/env bash
         cd ${config.xdg.configHome}/alacritty/
-        case $(uname) in
-          Linux)
-            darkmode=true
-          ;;
-          Darwin)
-            darkmode=$(osascript -e 'tell application "System Events" to get dark mode of appearance preferences')
-          ;;
-        esac
+        darkmode=$(osascript -e 'tell application "System Events" to get dark mode of appearance preferences')
         if [ "true" = "$darkmode" ]; then
           cp -f alacritty-dark.toml alacritty.toml
         else
