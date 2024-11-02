@@ -29,7 +29,7 @@ in {
 };
 ```
 
-The above expects home manager to be set up for you user [something like this](https://github.com/torgeir/nix/blob/main/flake.nix#L62)
+The above expects home manager to be set up for you user [something like this](https://github.com/torgeir/nix/blob/39f138b064670dc358a2c3b597549f0c5736afcd/flake.nix#L62)
 
 ``` nix
 ...
