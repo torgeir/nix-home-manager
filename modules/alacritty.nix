@@ -11,14 +11,20 @@ in {
   options.programs.t-terminal.alacritty.enable =
     lib.mkEnableOption "Enable alacritty configuration.";
 
+  options.programs.t-terminal.alacritty.package =
+    lib.mkPackageOption pkgs "alacritty" {
+      default = "alacritty";
+      example = "[ pkgs.unstable.alacritty ]";
+    };
+
   config = lib.mkIf cfg.enable {
 
     programs.alacritty = {
       enable = true;
-      package = pkgs.alacritty;
+      package = cfg.package;
     };
 
-    home.file = {
+    home.file = if pkgs.stdenv.isDarwin then {
       ".config/alacritty/main.toml".source = dotfiles
         + "/config/alacritty/main.toml";
       ".config/alacritty/alacritty.toml".source = dotfiles
@@ -32,7 +38,7 @@ in {
       ".config/alacritty/catppuccin-latte.toml".source = dotfiles
         + "/config/alacritty/catppuccin-latte.toml";
 
-      # TODO if darwin
+      # hack to switch theme on macos only
       ".config/alacritty/alacritty-toggle-appearance".text = ''
         #!/usr/bin/env bash
         cd ${config.xdg.configHome}/alacritty/
@@ -54,6 +60,13 @@ in {
         sudo chown torgeir ${config.xdg.configHome}/alacritty/alacritty-toggle-appearance
         sudo chmod u+x ${config.xdg.configHome}/alacritty/alacritty-toggle-appearance
       '';
+    } else {
+      ".config/alacritty/catppuccin-mocha.toml".source = dotfiles
+        + "/config/alacritty/catppuccin-mocha.toml";
+      ".config/alacritty/alacritty.toml".source = dotfiles
+        + "/config/alacritty/alacritty.toml";
+      ".config/alacritty/main.toml".source = dotfiles
+        + "/config/alacritty/main.toml";
     };
   };
 }
