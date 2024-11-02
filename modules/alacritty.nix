@@ -4,7 +4,7 @@ let
   cfg = config.programs.t-terminal.alacritty;
   dotfiles = builtins.fetchGit {
     url = "https://github.com/torgeir/dotfiles";
-    rev = "01073b7a3b44885d5fa3f7c372560417a4d3f1ca";
+    rev = "4d6ffad78640bfe606c24933ba9e58bd330e7cb1";
   };
 in {
 
