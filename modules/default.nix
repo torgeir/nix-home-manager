@@ -1,6 +1,6 @@
-{ lib, ... }:
+{ ... }:
 
 {
-  imports = [ ./emacs.nix ./nvim.nix ];
+  imports = [ ./alacritty.nix ./emacs.nix ./nvim.nix ];
 
 }
