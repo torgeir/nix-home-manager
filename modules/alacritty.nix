@@ -27,8 +27,6 @@ in {
     home.file = if pkgs.stdenv.isDarwin then {
       ".config/alacritty/main.toml".source = dotfiles
         + "/config/alacritty/main.toml";
-      ".config/alacritty/alacritty.toml".source = dotfiles
-        + "/config/alacritty/alacritty.toml";
       ".config/alacritty/alacritty-dark.toml".source = dotfiles
         + "/config/alacritty/alacritty-dark.toml";
       ".config/alacritty/alacritty-light.toml".source = dotfiles
@@ -57,6 +55,10 @@ in {
         fi
       '';
       ".config/alacritty/alacritty-toggle-appearance".onChange = ''
+        #!/usr/bin/env bash
+        if [ ! -f alacritty.toml ]; then
+          cp -f alacritty-dark.toml alacritty.toml
+        fi
         sudo chown torgeir ${config.xdg.configHome}/alacritty/alacritty-toggle-appearance
         sudo chmod u+x ${config.xdg.configHome}/alacritty/alacritty-toggle-appearance
       '';
