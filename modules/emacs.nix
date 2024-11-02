@@ -1,5 +1,6 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 let
+  cfg = config.programs.t-doomemacs;
   emacs = if pkgs.stdenv.isDarwin then
     pkgs.emacs29.overrideAttrs (old: {
       # inspiration https://github.com/noctuid/dotfiles/blob/30f615d0a8aed54cb21c9a55fa9c50e5a6298e80/nix/overlays/emacs.nix
@@ -28,75 +29,81 @@ let
   treesit = (pkgs.emacsPackagesFor emacs).treesit-grammars.with-all-grammars;
 in {
 
-  programs.emacs = {
-    enable = true;
-    package = emacs;
-    extraPackages = epkgs: [
-      epkgs.vterm
-      pkgs.mu # sic
-      epkgs.mu4e
-    ];
-  };
+  options.programs.t-doomemacs.enable =
+    lib.mkEnableOption "Enable doom emacs configuration.";
 
-  xdg.enable = true;
-  home = {
-    # put doom and custom .doom.d/bin/ on path
-    sessionPath = [
-      "${config.xdg.configHome}/emacs/bin"
-      "${config.home.homeDirectory}/.doom.d/bin"
-    ];
-    sessionVariables = {
-      # where doom is
-      DOOMDIR = "${config.xdg.configHome}/doom.d";
-      # where doom writes cache etc
-      DOOMLOCALDIR = "${config.xdg.configHome}/doom-local";
-      # where doom writes one more file
-      DOOMPROFILELOADFILE =
-        "${config.xdg.configHome}/doom-local/cache/profile-load.el";
+  config = lib.mkIf cfg.enable {
+
+    programs.emacs = {
+      enable = true;
+      package = emacs;
+      extraPackages = epkgs: [
+        epkgs.vterm
+        pkgs.mu # sic
+        epkgs.mu4e
+      ];
     };
-  };
-  xdg.configFile = {
-    # tree-sitter subdirectory of the directory specified by user-emacs-directory
-    "doom-local/cache/tree-sitter".source = "${treesit}/lib";
-    # git clone git@github.com:torgeir/.emacs.d.git ~/.doom.d
-    "doom.d".source = config.lib.file.mkOutOfStoreSymlink
-      "${config.home.homeDirectory}/.doom.d";
-    "emacs" = {
-      source = builtins.fetchGit {
-        url = "https://github.com/hlissner/doom-emacs";
-        rev = "e02d3c79a94065ba9f25728d98bef65a79521b2a";
+
+    xdg.enable = true;
+    home = {
+      # put doom and custom .doom.d/bin/ on path
+      sessionPath = [
+        "${config.xdg.configHome}/emacs/bin"
+        "${config.home.homeDirectory}/.doom.d/bin"
+      ];
+      sessionVariables = {
+        # where doom is
+        DOOMDIR = "${config.xdg.configHome}/doom.d";
+        # where doom writes cache etc
+        DOOMLOCALDIR = "${config.xdg.configHome}/doom-local";
+        # where doom writes one more file
+        DOOMPROFILELOADFILE =
+          "${config.xdg.configHome}/doom-local/cache/profile-load.el";
       };
-      # rev bumps will make doom sync run
-      onChange = "${pkgs.writeShellScript "doom-change" ''
-        # where your .doom.d files go
-        export DOOMDIR="${config.home.sessionVariables.DOOMDIR}"
+    };
+    xdg.configFile = {
+      # tree-sitter subdirectory of the directory specified by user-emacs-directory
+      "doom-local/cache/tree-sitter".source = "${treesit}/lib";
+      # git clone git@github.com:torgeir/.emacs.d.git ~/.doom.d
+      "doom.d".source = config.lib.file.mkOutOfStoreSymlink
+        "${config.home.homeDirectory}/.doom.d";
+      "emacs" = {
+        source = builtins.fetchGit {
+          url = "https://github.com/hlissner/doom-emacs";
+          rev = "e02d3c79a94065ba9f25728d98bef65a79521b2a";
+        };
+        # rev bumps will make doom sync run
+        onChange = "${pkgs.writeShellScript "doom-change" ''
+          # where your .doom.d files go
+          export DOOMDIR="${config.home.sessionVariables.DOOMDIR}"
 
-        # where doom will write to
-        export DOOMLOCALDIR="${config.home.sessionVariables.DOOMLOCALDIR}"
+          # where doom will write to
+          export DOOMLOCALDIR="${config.home.sessionVariables.DOOMLOCALDIR}"
 
-        # https://github.com/doomemacs/doomemacs/issues/6794
-        export DOOMPROFILELOADFILE="${config.home.sessionVariables.DOOMPROFILELOADFILE}"
+          # https://github.com/doomemacs/doomemacs/issues/6794
+          export DOOMPROFILELOADFILE="${config.home.sessionVariables.DOOMPROFILELOADFILE}"
 
-        # cannot find git, cannot find emacs
-        export PATH="$PATH:/run/current-system/sw/bin"
-        export PATH="$PATH:/etc/profiles/per-user/torgeir/bin"
+          # cannot find git, cannot find emacs
+          export PATH="$PATH:/run/current-system/sw/bin"
+          export PATH="$PATH:/etc/profiles/per-user/torgeir/bin"
 
-        if command -v emacs; then
-          # not already installed
-          if [ ! -d "$DOOMLOCALDIR" ]; then
-            # having the env generated also prevents doom install from asking y/n on stdin,
-            # also bring ssh socket
-            ${config.xdg.configHome}/emacs/bin/doom env -a ^SSH_ -a ^GPG
-            echo "doom-change :: Doom not installed: run doom install. ::"
+          if command -v emacs; then
+            # not already installed
+            if [ ! -d "$DOOMLOCALDIR" ]; then
+              # having the env generated also prevents doom install from asking y/n on stdin,
+              # also bring ssh socket
+              ${config.xdg.configHome}/emacs/bin/doom env -a ^SSH_ -a ^GPG
+              echo "doom-change :: Doom not installed: run doom install. ::"
+            else
+              echo "doom-change :: Doom already present: upgrade packages with doom sync -u ::"
+              ${config.xdg.configHome}/emacs/bin/doom sync
+            fi
           else
-            echo "doom-change :: Doom already present: upgrade packages with doom sync -u ::"
-            ${config.xdg.configHome}/emacs/bin/doom sync
+            echo "doom-change :: No emacs on path. ::"
           fi
-        else
-          echo "doom-change :: No emacs on path. ::"
-        fi
 
-      ''}";
+        ''}";
+      };
     };
   };
 }
