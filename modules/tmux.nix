@@ -4,7 +4,7 @@ let
   cfg = config.programs.t-tmux;
   dotfiles = builtins.fetchGit {
     url = "https://github.com/torgeir/dotfiles";
-    rev = "4d6ffad78640bfe606c24933ba9e58bd330e7cb1";
+    rev = "957bc71445f09fd7ddfb05aca76b9390bb81b9de";
   };
 in {
   options.programs.t-tmux.enable =
