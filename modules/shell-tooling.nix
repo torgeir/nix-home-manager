@@ -24,7 +24,10 @@ in {
       nix-direnv.enable = true;
     };
 
+    fonts.fontconfig.enable = true;
     home.packages = with pkgs; [
+      (iosevka-bin.override { variant = "sgr-iosevka-term-curly-slab"; })
+      (nerdfonts.override { fonts = [ "Iosevka" "IosevkaTerm" ]; })
       (ripgrep.override { withPCRE2 = true; })
       eza
       fd
