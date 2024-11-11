@@ -1,11 +1,6 @@
-{ config, lib, pkgs, ... }:
+{ dotfiles, config, lib, pkgs, ... }:
 
-let
-  cfg = config.programs.t-terminal.alacritty;
-  dotfiles = builtins.fetchGit {
-    url = "https://github.com/torgeir/dotfiles";
-    rev = "c3ecd80d1e805d80e00341c83388f9984771f4af";
-  };
+let cfg = config.programs.t-terminal.alacritty;
 in {
 
   options.programs.t-terminal.alacritty.enable =

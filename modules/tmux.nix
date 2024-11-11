@@ -1,11 +1,6 @@
-{ config, lib, pkgs, ... }:
+{ dotfiles, config, lib, pkgs, ... }:
 
-let
-  cfg = config.programs.t-tmux;
-  dotfiles = builtins.fetchGit {
-    url = "https://github.com/torgeir/dotfiles";
-    rev = "957bc71445f09fd7ddfb05aca76b9390bb81b9de";
-  };
+let cfg = config.programs.t-tmux;
 in {
   options.programs.t-tmux.enable =
     lib.mkEnableOption "Enable tmux configuration";
