@@ -12,6 +12,17 @@ in {
       "pkgs.firefox-bin, pkgs.firefox-devedition-bin or pkgs.firefox-nightly-bin";
   };
 
+  options.programs.t-firefox.extraEngines = lib.mkOption {
+    type = lib.types.attrsOf lib.types.str;
+    default = { };
+    example = {
+      "DuckDuckgo" = {
+        definedAliases = [ "@duckduckgo" ];
+        urls = [{ template = "https://duckduckgo.com/?q={searchTerms}"; }];
+      };
+    };
+  };
+
   config = lib.mkIf cfg.enable {
 
     home.sessionVariables = {
@@ -79,7 +90,7 @@ in {
           "Nixpkgs Unstable" = engine "nixpkgs-unstable"
             "https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={searchTerms}";
           "Nixfns" = engine "nixfns" "https://noogle.dev/q?term={searchTerms}";
-        }; # // (import ./firefox-da.nix { engine = engine; });
+        } // cfg.extraEngines;
       };
 
       policies = {
