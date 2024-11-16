@@ -12,16 +12,17 @@ in {
       "pkgs.firefox-bin, pkgs.firefox-devedition-bin or pkgs.firefox-nightly-bin";
   };
 
-  options.programs.t-firefox.extraEngines = lib.mkOption {
-    type = lib.types.attrsOf lib.types.str;
-    default = { };
-    example = {
-      "DuckDuckgo" = {
-        definedAliases = [ "@duckduckgo" ];
-        urls = [{ template = "https://duckduckgo.com/?q={searchTerms}"; }];
+  options.programs.t-firefox.extraEngines = with lib;
+    mkOption {
+      type = types.attrsOf (types.unspecified);
+      default = { };
+      example = {
+        "DuckDuckgo" = {
+          definedAliases = [ "@duckduckgo" ];
+          urls = [{ template = "https://duckduckgo.com/?q={searchTerms}"; }];
+        };
       };
     };
-  };
 
   config = lib.mkIf cfg.enable {
 
