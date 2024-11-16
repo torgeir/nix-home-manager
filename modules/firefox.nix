@@ -100,8 +100,11 @@ in {
             Value = false;
             Status = "locked";
           };
-        in { };
-
+        in {
+          # prevent cpu intensive defaults interfering with realtime audio
+          "reader.parse-on-load.enabled" = locked-false;
+          "media.webspeech.synth.enabled" = locked-false;
+        };
       };
     };
   };
