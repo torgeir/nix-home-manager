@@ -8,7 +8,7 @@ in {
 
   config = lib.mkIf cfg.enable {
 
-    home.file = { ".vimrc".source = ./config/vimrc; };
+    home.file = { ".vimrc".source = ./config/vim/vimrc; };
 
     # https://github.com/stefanDeveloper/nixos-lenovo-config/blob/master/modules/apps/editor/vim.nix
     programs.neovim = {
@@ -18,7 +18,7 @@ in {
       # alias vim=nvim
       vimAlias = true;
 
-      extraConfig = (builtins.readFile ./config/vimrc);
+      extraConfig = (builtins.readFile ./config/vim/vimrc);
 
       # https://github.com/NixOS/nixpkgs/blob/master/pkgs/applications/editors/vim/plugins/vim-plugin-names
       plugins = with pkgs.vimPlugins; [
@@ -30,7 +30,7 @@ in {
         {
           plugin = lightline-vim;
           config = ''
-            source ${./config/lightline.vim}
+            source ${./config/vim/lightline.vim}
             let g:lightline = {'colorscheme': 't'}
           '';
         }

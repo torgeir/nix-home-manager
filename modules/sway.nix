@@ -43,7 +43,7 @@ in {
 
     ];
 
-    home.file.".config/sway".source = dotfiles + "/config/sway";
+    # home.file.".config/sway".source = dotfiles + "/config/sway";
     home.file.".config/mako".source = dotfiles + "/config/mako";
     home.file.".config/dunst".source = dotfiles + "/config/dunst";
     home.file.".config/i3status-rust".source = dotfiles
@@ -59,7 +59,7 @@ in {
       };
       extraConfig = ''
         input type:keyboard {
-          xkb_file ${./sway/xkb/symbols/custom}
+          xkb_file ${./config/sway/xkb/symbols/custom}
         }
       '' + cfg.extraConfig;
     };
