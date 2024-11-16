@@ -55,6 +55,10 @@ in {
         #webp support
         libwebp
 
+        # emacs lsp
+        nil # nix lsp https://github.com/oxalica/nil
+        nixfmt-classic
+
         # emacs deps
         nodejs_20
         nodePackages.prettier
