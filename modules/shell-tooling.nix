@@ -33,6 +33,13 @@ in {
     ];
     home.file.".config/btop".source = dotfiles + "/config/btop";
     home.file.".config/bat".source = dotfiles + "/config/bat";
+
+    # zsh
+    home.file.".zsh".source = dotfiles + "/zsh/";
+    home.file.".zshrc".source = dotfiles + "/zshrc";
+    home.file.".inputrc".source = dotfiles + "/inputrc";
+    home.file.".zprofile".source = dotfiles + "/profile";
+    home.file.".p10k.zsh".source = dotfiles + "/p10k.zsh";
   };
 
 }
