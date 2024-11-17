@@ -56,6 +56,7 @@ in {
     home.file.".config/dunst".source = dotfiles + "/config/dunst";
     home.file.".config/i3status-rust".source = dotfiles
       + "/config/i3status-rust";
+    home.file.".config/sway/keymap".source = ./config/sway/xkb/symbols/custom;
     home.file.".config/tofi/config".text = ''
       font=IosevkaTerm Nerd Font
       anchor = top
@@ -101,7 +102,7 @@ in {
         ];
         input = { 
           "type:keyboard" = {
-            xkb_file = ./config/sway/xkb/symbols/custom;
+            xkb_file = "${config.xdg.configHome}/sway/keymap";
             xkb_options = "caps:none";
           };
           "type:touchpad" = {
