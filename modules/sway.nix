@@ -43,7 +43,7 @@ in {
 
     ];
 
-    # home.file.".config/sway".source = dotfiles + "/config/sway";
+    home.file.".config/bg.jpg".source = dotfiles + "/bg.jpg";
     home.file.".config/mako".source = dotfiles + "/config/mako";
     home.file.".config/dunst".source = dotfiles + "/config/dunst";
     home.file.".config/i3status-rust".source = dotfiles
