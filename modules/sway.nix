@@ -35,7 +35,7 @@ in {
     default = "${pkgs.sway}/bin/swaybar";
   };
 
-  config = lib.mkIf cfg.enable {
+  config = lib.mkIf (cfg.enable && !pkgs.stdenv.isDarwin) {
 
     home.packages = with pkgs; [
       # screenshots
