@@ -21,6 +21,12 @@ in {
     '';
   };
 
+  options.programs.t-sway.statusCommand = lib.mkOption {
+    type = lib.types.nullOr lib.types.str;
+    example = null;
+    default = "i3status-rs ~/.config/i3status-rust/config.toml";
+  };
+
   config = lib.mkIf cfg.enable {
 
     home.packages = with pkgs; [
@@ -94,7 +100,7 @@ in {
             names = [ "pango:IosevkaTerm Nerd Font" "FontAwesome" ];
             size = 11.0;
           };
-          statusCommand = "i3status-rs ~/.config/i3status-rust/config.toml";
+          statusCommand = cfg.statusCommand;
 
           #colors = {
           #  separator = "#666666";
