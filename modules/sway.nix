@@ -22,14 +22,14 @@ in {
 
   options.programs.t-sway.statusCommand = lib.mkOption {
     type = lib.types.nullOr lib.types.str;
-    example = null;
-    default = "i3status-rs ~/.config/i3status-rust/config.toml";
+    example = "${pkgs.i3status-rs}/bin/i3status-rs ~/.config/i3status-rust/config.toml";
+    default = "${pkgs.i3status}/bin/i3status";
   };
 
   options.programs.t-sway.command = lib.mkOption {
     type = lib.types.nullOr lib.types.str;
-    example = "";
-    default = "";
+    example = "${pkgs.sway}/bin/swaybar";
+    default = "${pkgs.sway}/bin/swaybar";
   };
 
   config = lib.mkIf cfg.enable {
@@ -47,6 +47,10 @@ in {
 
       # launcher
       tofi
+
+      # bars
+      i3status
+      i3status-rs
 
       # media keys
       playerctl
