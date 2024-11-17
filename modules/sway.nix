@@ -280,7 +280,8 @@ in {
             "move container to workspace number 10; workspace 10";
 
           # layouts
-          "${meta}+Shift+s" = "layout toggle split tabbed stacking";
+          "${meta}+Shift+x" = "layout toggle all";
+          "${meta}+Shift+s" = "layout toggle split";
           "${meta}+Shift+g" = "splith";
           "${meta}+Shift+v" = "splitv";
 
