@@ -17,6 +17,3 @@ xkb_keymap {
   };
   xkb_geometry  { include "macintosh(applealu_iso)"	};
 };
-
-# capslock as ctrl
-xkb_options ctrl:nocaps
