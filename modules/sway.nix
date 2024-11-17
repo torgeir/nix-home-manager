@@ -99,6 +99,17 @@ in {
             '';
           }
         ];
+        input = { 
+          "type:keyboard" = {
+            xkb_file = ./config/sway/xkb/symbols/custom;
+            xkb_options = "caps:none";
+          };
+          "type:touchpad" = {
+            natural_scroll = "enabled";
+            tap = "enabled";
+            click_method = "button_areas";
+          };
+        };
         window.commands = [
           {
             criteria.class = ".*";
@@ -316,11 +327,7 @@ in {
           };
         };
       };
-      extraConfig = ''
-        input type:keyboard {
-          xkb_file ${./config/sway/xkb/symbols/custom}
-        }
-      '' + cfg.extraConfig;
+      extraConfig = cfg.extraConfig;
     };
   };
 }
