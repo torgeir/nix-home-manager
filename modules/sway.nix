@@ -10,6 +10,9 @@ in {
   options.programs.t-sway.enable =
     lib.mkEnableOption "Enable sway configuration.";
 
+  options.programs.t-sway.titlebar =
+    lib.mkEnableOption "Enable sway titlebar.";
+
   options.programs.t-sway.extraConfig = lib.mkOption {
     type = lib.types.str;
     default = "";
@@ -120,16 +123,19 @@ in {
             click_method = "button_areas";
           };
         };
-        window.commands = [
-          {
-            criteria.class = ".*";
-            command = "opacity ${opacity}";
-          }
-          {
-            criteria.app_id = ".*";
-            command = "opacity ${opacity}";
-          }
-        ];
+        window = {
+          titlebar = cfg.titlebar;
+          commands = [
+            {
+              criteria.class = ".*";
+              command = "opacity ${opacity}";
+            }
+            {
+              criteria.app_id = ".*";
+              command = "opacity ${opacity}";
+            }
+          ];
+        };
         gaps = {
           inner = 10;
           outer = 0;
