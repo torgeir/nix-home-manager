@@ -22,7 +22,7 @@ in {
 
   options.programs.t-sway.statusCommand = lib.mkOption {
     type = lib.types.nullOr lib.types.str;
-    example = "${pkgs.i3status-rs}/bin/i3status-rs ~/.config/i3status-rust/config.toml";
+    example = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config.toml";
     default = "${pkgs.i3status}/bin/i3status";
   };
 
@@ -50,7 +50,7 @@ in {
 
       # bars
       i3status
-      i3status-rs
+      i3status-rust
 
       # media keys
       playerctl
