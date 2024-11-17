@@ -6,7 +6,6 @@
     ./emacs.nix
     ./nvim.nix
     ./git.nix
-    ./sway.nix
     ./firefox.nix
     ./zoxide.nix
     ./shell-tooling.nix
