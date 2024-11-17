@@ -300,6 +300,7 @@ in {
         input type:keyboard {
           xkb_file ${./config/sway/xkb/symbols/custom}
           # capslock as ctrl
+          xkb_capslock disabled
           xkb_options ctrl:nocaps
         }
       '' + cfg.extraConfig;
