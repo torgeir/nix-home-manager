@@ -19,5 +19,4 @@ xkb_keymap {
 };
 
 # capslock as ctrl
-xkb_capslock disabled
 xkb_options ctrl:nocaps
