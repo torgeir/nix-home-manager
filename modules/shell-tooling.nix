@@ -1,4 +1,4 @@
-{ dotfiles, config, lib, pkgs, ... }:
+{ dotfiles, config, lib, pkgs, isLinux ? false, ... }:
 
 let cfg = config.programs.t-shell-tooling;
 in {
@@ -20,17 +20,18 @@ in {
     };
 
     fonts.fontconfig.enable = true;
-    home.packages = with pkgs; [
-      (nerdfonts.override { fonts = [ "Iosevka" "IosevkaTerm" ]; })
-      (ripgrep.override { withPCRE2 = true; })
-      eza
-      fd
-      bat
-      gawk
-      htop
-      btop
-      watch
-    ];
+    home.packages = with pkgs;
+      [
+        (nerdfonts.override { fonts = [ "Iosevka" "IosevkaTerm" ]; })
+        (ripgrep.override { withPCRE2 = true; })
+        eza
+        fd
+        bat
+        gawk
+        htop
+        btop
+        watch
+      ] ++ lib.optionals (isLinux) [ ncdu ];
     home.file.".config/btop".source = dotfiles + "/config/btop";
     home.file.".config/bat".source = dotfiles + "/config/bat";
 
