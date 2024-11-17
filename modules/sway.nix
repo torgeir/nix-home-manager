@@ -10,8 +10,7 @@ in {
   options.programs.t-sway.enable =
     lib.mkEnableOption "Enable sway configuration.";
 
-  options.programs.t-sway.titlebar =
-    lib.mkEnableOption "Enable sway titlebar.";
+  options.programs.t-sway.titlebar = lib.mkEnableOption "Enable sway titlebar.";
 
   options.programs.t-sway.extraConfig = lib.mkOption {
     type = lib.types.str;
@@ -25,7 +24,8 @@ in {
 
   options.programs.t-sway.statusCommand = lib.mkOption {
     type = lib.types.nullOr lib.types.str;
-    example = "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config.toml";
+    example =
+      "${pkgs.i3status-rust}/bin/i3status-rs ~/.config/i3status-rust/config.toml";
     default = "${pkgs.i3status}/bin/i3status";
   };
 
@@ -112,7 +112,7 @@ in {
             '';
           }
         ];
-        input = { 
+        input = {
           "type:keyboard" = {
             xkb_file = "${config.xdg.configHome}/sway/keymap";
             xkb_options = "caps:none";
