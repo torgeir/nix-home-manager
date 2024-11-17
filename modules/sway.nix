@@ -5,7 +5,6 @@ in {
 
   # sway also needs
   #   hardware.opengl.enable = true;
-  #   hardware.opengl.driSupport = true;
   #   security.polkit.enable = true;
 
   options.programs.t-sway.enable =
