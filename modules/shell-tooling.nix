@@ -29,7 +29,6 @@ in {
       gawk
       htop
       btop
-      ncdu
       watch
     ];
     home.file.".config/btop".source = dotfiles + "/config/btop";
