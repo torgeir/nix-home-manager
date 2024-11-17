@@ -13,7 +13,7 @@ let
   # clone it
   nix-home-manager = builtins.fetchGit {
     url = "https://github.com/torgeir/nix-home-manager";
-    rev = "92b9449c404e92bd9e56f15373c7217c339e0045";
+    rev = "c1fdc3c3f10104864b60aeef06e967dc8ddcd599";
   };
 in {
 
