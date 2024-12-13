@@ -22,7 +22,8 @@ in {
     fonts.fontconfig.enable = true;
     home.packages = with pkgs;
       [
-        (nerdfonts.override { fonts = [ "Iosevka" "IosevkaTerm" ]; })
+        nerd-fonts.iosevka
+        nerd-fonts.iosevka-term
         (ripgrep.override { withPCRE2 = true; })
         eza
         fd
