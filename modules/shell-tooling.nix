@@ -1,6 +1,14 @@
 { dotfiles, config, lib, pkgs, isLinux ? false, ... }:
 
-let cfg = config.programs.t-shell-tooling;
+let
+  cfg = config.programs.t-shell-tooling;
+
+  # 2025-10-14
+  pkgs-unstable = import (fetchTarball {
+    url =
+      "https://github.com/NixOS/nixpkgs/archive/9abb87b552b7f55ac8916b6fc9e5cb486656a2f3.tar.gz";
+    sha256 = "";
+  }) { };
 in {
 
   options.programs.t-shell-tooling.enable =
@@ -22,8 +30,11 @@ in {
     fonts.fontconfig.enable = true;
     home.packages = with pkgs;
       [
-        nerd-fonts.iosevka
-        nerd-fonts.iosevka-term
+
+        # TODO remove pkgs-unstable from these when they are renamed nerd-fonts also in nix stable
+        pkgs-unstable.nerd-fonts.iosevka
+        pkgs-unstable.nerd-fonts.iosevka-term
+
         (ripgrep.override { withPCRE2 = true; })
         eza
         fd

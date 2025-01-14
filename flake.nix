@@ -1,9 +1,11 @@
 {
   description = "torgeir/nix-home-manager";
 
-  inputs = { };
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+  };
 
-  outputs = { self }:
+  outputs = { nixpkgs, self }:
     {
 
     };
