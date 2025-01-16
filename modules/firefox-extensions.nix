@@ -89,4 +89,13 @@ in {
     sha256 = "bb67f47a554f8f937f4176bee6144945eb0f240630b93f73d2cff49f0985b55a";
   };
 
+  sidebery = buildExtension rec {
+    pname = "sidebery";
+    version = "5.2.0";
+    id = "mbnuqw";
+    url =
+      "https://addons.mozilla.org/firefox/downloads/file/4246774/sidebery-${version}.xpi";
+    sha256 = "4b580cd6e165f69f9adb79fd8face37e3a539aaa637539a0b58bb835d387f406";
+  };
+
 }
