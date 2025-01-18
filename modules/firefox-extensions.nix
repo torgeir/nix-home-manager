@@ -20,9 +20,10 @@ in {
   # find urls and sha256 by
   # curl -s --head https://addons.mozilla.org/firefox/downloads/latest/darkreader/ | grep location | awk '{print $2}' | pbcopy
   # nix-hash --type sha256 --flat <(curl -L -s https://addons.mozilla.org/firefox/downloads/latest/darkreader/)
+  # this does not always work, just download the xpi instead and sha256sum
   #
   # find ids by installing a plugin manually then going to about:debugging#/runtime/this-firefox
-  # remove it then add it here
+  # remove it then add it here or looking at manifest.json:browser_specific_settings.gecko.id
   #
   # or look at https://gitlab.com/rycee/nur-expressions/-/blob/master/pkgs/firefox-addons/generated-firefox-addons.nix?ref_type=heads
 
@@ -92,7 +93,7 @@ in {
   sidebery = buildExtension rec {
     pname = "sidebery";
     version = "5.2.0";
-    id = "mbnuqw";
+    id = "{3c078156-979c-498b-8990-85f7987dd929}";
     url =
       "https://addons.mozilla.org/firefox/downloads/file/4246774/sidebery-${version}.xpi";
     sha256 = "a5dd94227daafeec200dc2052fae6daa74d1ba261c267b71c03faa4cc4a6fa14";
