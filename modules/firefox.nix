@@ -69,6 +69,7 @@ in {
             extensions.firefox-color
             extensions.onepassword-x-password-manager
             extensions.tree-style-tab
+            extensions.sidebery
           ];
         #https://github.com/montchr/dotfield/blob/78de8ff316ccb2d34fd98cd9bfd3bfb5ad775b0e/home/profiles/firefox/search/default.nix
         search.force = true;
