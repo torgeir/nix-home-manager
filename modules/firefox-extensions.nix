@@ -29,47 +29,47 @@ in {
 
   darkreader = buildExtension rec {
     pname = "darkreader";
-    version = "4.9.73";
+    version = "4.9.99";
     id = "addon@darkreader.org";
     url =
-      "https://addons.mozilla.org/firefox/downloads/file/4205543/darkreader-${version}.xpi";
-    sha256 = "7c399ff32561886bb80dad0cafaf8f629792b0b71ff1efcf12667e05a2b38f1a";
+      "https://addons.mozilla.org/firefox/downloads/file/4405074/darkreader-${version}.xpi";
+    sha256 = "02c67ce2b3cd96719b5e369b9207ef11ed6c3a79eccb454d1e6ec3e005004e72";
   };
 
   ublock-origin = buildExtension rec {
     pname = "ublock-origin";
-    version = "1.55.0";
+    version = "1.62.0";
     id = "uBlock0@raymondhill.net";
     url =
-      "https://addons.mozilla.org/firefox/downloads/file/4198829/ublock_origin-${version}.xpi";
-    sha256 = "9797160908191710ff0858536ba6dc29ecad9923c30b2ad6d3e5e371d759e44d";
+      "https://addons.mozilla.org/firefox/downloads/file/4412673/ublock_origin-${version}.xpi";
+    sha256 = "8a9e02aa838c302fb14e2b5bc88a6036d36358aadd6f95168a145af2018ef1a3";
   };
 
   onepassword-x-password-manager = buildExtension rec {
     pname = "1password-x-password-manager";
-    version = "2.15.1";
+    version = "8.10.56.28";
     id = "{d634138d-c276-4fc8-924b-40a0ea21d284}";
     url =
-      "https://addons.mozilla.org/firefox/downloads/file/4168788/1password_x_password_manager-${version}.xpi";
-    sha256 = "2210a7a79456bf59e445e7b751de676a29f610de14c6ea3b04cb2c7763a54b2a";
+      "https://addons.mozilla.org/firefox/downloads/file/4404461/1password_x_password_manager-${version}.xpi";
+    sha256 = "dd23e347a7b51b8a6ef2ebb463764ab08dec0900dfe7454b588ca123a7449d71";
   };
 
   vimium-ff = buildExtension rec {
     pname = "vimium-ff";
-    version = "2.0.6";
+    version = "2.1.2";
     id = "{d7742d87-e61d-4b78-b8a1-b469842139fa}";
     url =
-      "https://addons.mozilla.org/firefox/downloads/file/4191523/vimium_ff-${version}.xpi";
-    sha256 = "94a2d7e88596b65891747d48837deb5440780d57db7ae330d1d7d43d5fe64922";
+      "https://addons.mozilla.org/firefox/downloads/file/4259790/vimium_ff-${version}.xpi";
+    sha256 = "3b9d43ee277ff374e3b1153f97dc20cb06e654116a833674c79b43b8887820e1";
   };
 
   multi-account-containers = buildExtension rec {
     pname = "multi-account-containers";
-    version = "8.1.3";
+    version = "8.2.0";
     id = "@testpilot-containers";
     url =
-      "https://addons.mozilla.org/firefox/downloads/file/4186050/multi_account_containers-${version}.xpi";
-    sha256 = "33edd98d0fc7d47fa310f214f897ce4dfe268b0f868c9d7f32b4ca50573df85c";
+      "https://addons.mozilla.org/firefox/downloads/file/4355970/multi_account_containers-${version}.xpi";
+    sha256 = "1ce35650853973572bc1ce770076d93e00b6b723b799f7b90c3045268c64b422";
   };
 
   firefox-color = buildExtension rec {
