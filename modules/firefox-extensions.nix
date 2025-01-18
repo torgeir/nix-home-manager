@@ -95,7 +95,7 @@ in {
     id = "mbnuqw";
     url =
       "https://addons.mozilla.org/firefox/downloads/file/4246774/sidebery-${version}.xpi";
-    sha256 = "4b580cd6e165f69f9adb79fd8face37e3a539aaa637539a0b58bb835d387f406";
+    sha256 = "a5dd94227daafeec200dc2052fae6daa74d1ba261c267b71c03faa4cc4a6fa14";
   };
 
 }
