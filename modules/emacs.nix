@@ -2,7 +2,7 @@
 let
   cfg = config.programs.t-doomemacs;
   emacs = if pkgs.stdenv.isDarwin then
-    pkgs.emacs29.overrideAttrs (old: {
+    pkgs.emacs30.overrideAttrs (old: {
       # inspiration https://github.com/noctuid/dotfiles/blob/30f615d0a8aed54cb21c9a55fa9c50e5a6298e80/nix/overlays/emacs.nix
       patches = (old.patches or [ ]) ++ [
         # fix os window role so that yabai can pick up emacs
@@ -13,19 +13,19 @@ let
         })
         (pkgs.fetchpatch {
           url =
-            "https://raw.githubusercontent.com/d12frosted/homebrew-emacs-plus/master/patches/emacs-29/round-undecorated-frame.patch";
+            "https://raw.githubusercontent.com/d12frosted/homebrew-emacs-plus/master/patches/emacs-30/round-undecorated-frame.patch";
           sha256 = "uYIxNTyfbprx5mCqMNFVrBcLeo+8e21qmBE3lpcnd+4=";
         })
-        # prevent cocoa app refocus after emacs is hidden or quit
-        (pkgs.fetchpatch {
-          url =
-            "https://raw.githubusercontent.com/d12frosted/homebrew-emacs-plus/master/patches/emacs-28/no-frame-refocus-cocoa.patch";
-          sha256 = "QLGplGoRpM4qgrIAJIbVJJsa4xj34axwT3LiWt++j/c=";
-        })
+        # # prevent cocoa app refocus after emacs is hidden or quit
+        # (pkgs.fetchpatch {
+        #   url =
+        #     "https://raw.githubusercontent.com/d12frosted/homebrew-emacs-plus/master/patches/emacs-28/no-frame-refocus-cocoa.patch";
+        #   sha256 = "QLGplGoRpM4qgrIAJIbVJJsa4xj34axwT3LiWt++j/c=";
+        # })
       ];
     })
   else
-    pkgs.emacs29-pgtk;
+    pkgs.emacs30-pgtk;
   treesit = (pkgs.emacsPackagesFor emacs).treesit-grammars.with-all-grammars;
 in {
 
