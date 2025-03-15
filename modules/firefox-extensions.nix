@@ -45,13 +45,14 @@ in {
     sha256 = "8a9e02aa838c302fb14e2b5bc88a6036d36358aadd6f95168a145af2018ef1a3";
   };
 
+  # ! name has -, filename has _
   onepassword-x-password-manager = buildExtension rec {
     pname = "1password-x-password-manager";
-    version = "8.10.56.28";
+    version = "8.10.64.7";
     id = "{d634138d-c276-4fc8-924b-40a0ea21d284}";
     url =
-      "https://addons.mozilla.org/firefox/downloads/file/4404461/1password_x_password_manager-${version}.xpi";
-    sha256 = "dd23e347a7b51b8a6ef2ebb463764ab08dec0900dfe7454b588ca123a7449d71";
+      "https://addons.mozilla.org/firefox/downloads/file/4448043/1password_x_password_manager-${version}.xpi";
+    sha256 = "c67f4fa0b6cdfe7e5efea4f5a09a1c57fda0e0f55d999761f5b4e9e4180ba4ef";
   };
 
   vimium-ff = buildExtension rec {
