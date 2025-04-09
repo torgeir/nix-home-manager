@@ -2,7 +2,7 @@
 let
   cfg = config.programs.t-doomemacs;
   emacs = if pkgs.stdenv.isDarwin then
-    pkgs.emacs30.overrideAttrs (old: {
+    (pkgs.emacs30.overrideAttrs (old: {
       # inspiration https://github.com/noctuid/dotfiles/blob/30f615d0a8aed54cb21c9a55fa9c50e5a6298e80/nix/overlays/emacs.nix
       patches = (old.patches or [ ]) ++ [
         # fix os window role so that yabai can pick up emacs
@@ -16,14 +16,11 @@ let
             "https://raw.githubusercontent.com/d12frosted/homebrew-emacs-plus/master/patches/emacs-30/round-undecorated-frame.patch";
           sha256 = "uYIxNTyfbprx5mCqMNFVrBcLeo+8e21qmBE3lpcnd+4=";
         })
-        # # prevent cocoa app refocus after emacs is hidden or quit
-        # (pkgs.fetchpatch {
-        #   url =
-        #     "https://raw.githubusercontent.com/d12frosted/homebrew-emacs-plus/master/patches/emacs-28/no-frame-refocus-cocoa.patch";
-        #   sha256 = "QLGplGoRpM4qgrIAJIbVJJsa4xj34axwT3LiWt++j/c=";
-        # })
       ];
-    })
+    })).override {
+      # TODO wait for https://github.com/NixOS/nixpkgs/issues/395169
+      withNativeCompilation = false;
+    }
   else
     pkgs.emacs30-pgtk;
   treesit = (pkgs.emacsPackagesFor emacs).treesit-grammars.with-all-grammars;
@@ -36,12 +33,8 @@ in {
 
     programs.emacs = {
       enable = true;
-      package = emacs;
-      extraPackages = epkgs: [
-        epkgs.vterm
-        pkgs.mu # sic
-        epkgs.mu4e
-      ];
+      package = ((pkgs.emacsPackagesFor emacs).emacsWithPackages
+        (epkgs: [ epkgs.vterm epkgs.mu4e treesit ]));
     };
 
     xdg.enable = true;
