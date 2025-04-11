@@ -34,7 +34,7 @@ in {
     programs.emacs = {
       enable = true;
       package = ((pkgs.emacsPackagesFor emacs).emacsWithPackages
-        (epkgs: [ epkgs.vterm epkgs.mu4e treesit ]));
+        (epkgs: [ epkgs.vterm epkgs.mu4e epkgs.pdf-tools treesit ]));
     };
 
     xdg.enable = true;
