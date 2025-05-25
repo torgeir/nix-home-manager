@@ -59,7 +59,7 @@ in {
           #TabsToolbar    { visibility: collapse !important; }
           #sidebar-header { visibility: collapse !important; }
         '';
-        extensions =
+        extensions.packages =
           let extensions = (pkgs.callPackage ./firefox-extensions.nix { });
           in [
             extensions.darkreader
@@ -82,9 +82,9 @@ in {
           "Github Code" = engine "github-code"
             "https://github.com/search?q={searchTerms}&type=code";
           "Npm" = engine "npm" "https://www.npmjs.com/search?q={searchTerms}";
-          "DuckDuckGo" =
+          "ddg" =
             engine "duckduckgo" "https://duckduckgo.com/?q={searchTerms}";
-          "Google" =
+          "google" =
             engine "google" "https://www.google.com/search?q={searchTerms}";
           "Nixpkgs" = engine "nixpkgs"
             "https://search.nixos.org/packages?type=packages&query={searchTerms}";
