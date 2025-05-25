@@ -48,20 +48,20 @@ in {
   # ! name has -, filename has _
   onepassword-x-password-manager = buildExtension rec {
     pname = "1password-x-password-manager";
-    version = "8.10.64.7";
+    version = "8.10.76.34";
     id = "{d634138d-c276-4fc8-924b-40a0ea21d284}";
     url =
-      "https://addons.mozilla.org/firefox/downloads/file/4448043/1password_x_password_manager-${version}.xpi";
-    sha256 = "c67f4fa0b6cdfe7e5efea4f5a09a1c57fda0e0f55d999761f5b4e9e4180ba4ef";
+      "https://addons.mozilla.org/firefox/downloads/file/4492437/1password_x_password_manager-${version}.xpi";
+    sha256 = "d4c28dbe6112b366dcac7c03555d721c5223a0e517699f70ef2b39f634b55393";
   };
 
   vimium-ff = buildExtension rec {
     pname = "vimium-ff";
-    version = "2.1.2";
+    version = "2.2.1";
     id = "{d7742d87-e61d-4b78-b8a1-b469842139fa}";
     url =
-      "https://addons.mozilla.org/firefox/downloads/file/4259790/vimium_ff-${version}.xpi";
-    sha256 = "3b9d43ee277ff374e3b1153f97dc20cb06e654116a833674c79b43b8887820e1";
+      "https://addons.mozilla.org/firefox/downloads/file/4458679/vimium_ff-${version}.xpi";
+    sha256 = "9061c7515114a78dcddadbbfde9e77120975140337d1b28695e303ceedaf6182";
   };
 
   multi-account-containers = buildExtension rec {
