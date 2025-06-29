@@ -20,6 +20,7 @@ in {
     };
 
     home.file = if pkgs.stdenv.isDarwin then {
+      "bin/alacritty-open".source = dotfiles + "/alacritty-open";
       ".config/alacritty/main.toml".source = dotfiles
         + "/config/alacritty/main.toml";
       ".config/alacritty/alacritty-dark.toml".source = dotfiles
