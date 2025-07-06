@@ -33,16 +33,20 @@ in {
         + "/config/alacritty/catppuccin-latte.toml";
 
       # hack to switch theme on macos only
-      ".config/alacritty/alacritty-toggle-appearance".text = ''
-        #!/usr/bin/env bash
-        cd ${config.xdg.configHome}/alacritty/
-        darkmode=$(osascript -e 'tell application "System Events" to get dark mode of appearance preferences')
-        if [ "true" = "$darkmode" ]; then
-          cp -f alacritty-dark.toml alacritty.toml
-        else
-          cp -f alacritty-light.toml alacritty.toml
-        fi
-      '';
+      ".config/alacritty/alacritty-toggle-appearance" = {
+        text = ''
+          #!/usr/bin/env bash
+          cd ${config.xdg.configHome}/alacritty/
+          darkmode=$(osascript -e 'tell application "System Events" to get dark mode of appearance preferences')
+          if [ "true" = "$darkmode" ]; then
+            cp -f alacritty-dark.toml alacritty.toml
+          else
+            cp -f alacritty-light.toml alacritty.toml
+          fi
+        '';
+        executable = true;
+      };
+
       ".config/alacritty/alacritty-toggle-appearance".onChange = ''
         #!/usr/bin/env bash
         cd ${config.xdg.configHome}/alacritty/
