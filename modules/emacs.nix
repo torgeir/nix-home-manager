@@ -89,7 +89,7 @@ in {
       "emacs" = {
         source = builtins.fetchGit {
           url = "https://github.com/doomemacs/doomemacs";
-          rev = "9e624b5dfe54b7d8523d55313c22a5ef54659540";
+          rev = "5b5b170f7902e81826fd8efbec88eb38e23e2807";
         };
         # rev bumps will make doom sync run
         onChange = "${pkgs.writeShellScript "doom-change" ''
