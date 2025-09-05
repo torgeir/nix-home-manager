@@ -12,6 +12,12 @@ in {
       "pkgs.firefox-bin, pkgs.firefox-devedition-bin or pkgs.firefox-nightly-bin";
   };
 
+  options.programs.t-firefox.legacyExtensions = lib.mkOption {
+      type = lib.types.bool;
+      default = true;
+      description = "If 'extensions' should be used instead of 'extensions.packages' for extension config";
+    };
+
   options.programs.t-firefox.extraEngines = with lib;
     mkOption {
       type = types.attrsOf (types.unspecified);
@@ -59,17 +65,6 @@ in {
           #TabsToolbar    { visibility: collapse !important; }
           #sidebar-header { visibility: collapse !important; }
         '';
-        extensions =
-          let extensions = (pkgs.callPackage ./firefox-extensions.nix { });
-          in [
-            extensions.darkreader
-            extensions.vimium-ff
-            extensions.ublock-origin
-            extensions.multi-account-containers
-            extensions.firefox-color
-            extensions.onepassword-x-password-manager
-            extensions.sidebery
-          ];
         #https://github.com/montchr/dotfield/blob/78de8ff316ccb2d34fd98cd9bfd3bfb5ad775b0e/home/profiles/firefox/search/default.nix
         search.force = true;
         search.default = "ddg";
@@ -91,7 +86,24 @@ in {
             "https://search.nixos.org/packages?channel=unstable&from=0&size=50&sort=relevance&type=packages&query={searchTerms}";
           "Nixfns" = engine "nixfns" "https://noogle.dev/q?term={searchTerms}";
         } // cfg.extraEngines;
-      };
+      } // (
+        let
+          extensions =
+            with (pkgs.callPackage ./firefox-extensions.nix { });
+            [
+              darkreader
+              ublock-origin
+              onepassword-x-password-manager
+              vimium-ff
+              multi-account-containers
+              firefox-color
+              sidebery
+            ];
+          in
+          if cfg.legacyExtensions
+          then { extensions = extensions; }
+          else { extensions.packages = extensions; }
+      );
 
       policies = {
         Preferences = let
