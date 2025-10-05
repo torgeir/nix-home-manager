@@ -19,14 +19,10 @@ in {
 
   # find urls and sha256 by
 
-  #for w in darkreader ublock-origin 1password-x-password-manager vimium-ff multi-account-containers firefox-color tree-style-tab sidebery; do
-  #  echo $w
-  #  u=$(curl -L -s --head https://addons.mozilla.org/firefox/downloads/latest/$w/ | grep location | awk '{print $2}' | tr -d "\r\n")
-  #  cat <<EOF
-  #      url = "$u";
-  #      sha256sum = "$(nix-prefetch-url $u)";
-  #  EOF
-  #done
+# for w in darkreader ublock-origin 1password-x-password-manager vimium-ff multi-account-containers firefox-color tree-style-tab sidebery; do
+#   u=$(curl -L -s --head https://addons.mozilla.org/firefox/downloads/latest/$w/ | grep location | awk '{print $2}' | tr -d "\r\n")
+#   echo "    url = \"$u\";\n    sha256 = \"$(nix-prefetch-url $u 2>/dev/null)\";\n";
+# done
 
   # find ids by installing a plugin manually then going to about:debugging#/runtime/this-firefox
   # remove it then add it here or looking at manifest.json:browser_specific_settings.gecko.id
@@ -45,8 +41,8 @@ in {
     pname = "ublock-origin";
     version = "1.65.0";
     id = "uBlock0@raymondhill.net";
-    url = "https://addons.mozilla.org/firefox/downloads/file/4531307/ublock_origin-1.65.0.xpi";
-    sha256 = "1krki9kf1xx7sypx33dgajrgajwq6bh6yxghcmh8ccx955mcjwry";
+    url = "https://addons.mozilla.org/firefox/downloads/file/4578681/ublock_origin-1.66.4.xpi";
+    sha256 = "1c3z0ww46xcc370rlb3g8q41hjxx5csqjhwnd0ajy8810s9wsqmw";
   };
 
   # ! name has -, filename has _
@@ -54,8 +50,8 @@ in {
     pname = "1password-x-password-manager";
     version = "8.11.8.40.";
     id = "{d634138d-c276-4fc8-924b-40a0ea21d284}";
-    url = "https://addons.mozilla.org/firefox/downloads/file/4565400/1password_x_password_manager-8.11.8.40.xpi";
-    sha256 = "1y9r74jzxb0bb03w2m6d6hwym33hmgkvqgw7k1lq9gw3y37qjny3";
+    url = "https://addons.mozilla.org/firefox/downloads/file/4588819/1password_x_password_manager-8.11.12.27.xpi";
+    sha256 = "18x3vsxwnj15bk5wbpkhqjygriyqgxmvxqzz9hqi5k27ix2qap23";
   };
 
   vimium-ff = buildExtension rec {
@@ -86,8 +82,8 @@ in {
     pname = "tree-style-tab";
     version = "4.2.5";
     id = "treestyletab@piro.sakura.ne.jp";
-    url = "https://addons.mozilla.org/firefox/downloads/file/4531347/tree_style_tab-4.2.5.xpi";
-    sha256 = "0zwffvwlmpvcpk5jxk7a1rl2fn1xfqi0mb0y20yg4ich50r2a3dl";
+    url = "https://addons.mozilla.org/firefox/downloads/file/4583182/tree_style_tab-4.2.6.xpi";
+    sha256 = "1yaixz2dssv8sbzlk90p0jjc91yxrn7w7l94dwkbjvg2szn9x61z";
   };
 
   sidebery = buildExtension rec {
