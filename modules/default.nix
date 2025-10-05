@@ -3,7 +3,6 @@
 {
   imports = [
     ./alacritty.nix
-    ./emacs.nix
     ./nvim.nix
     ./git.nix
     ./firefox.nix

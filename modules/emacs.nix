@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ inputs, config, lib, pkgs, ... }:
 let
   cfg = config.programs.t-doomemacs;
   emacs = if pkgs.stdenv.isDarwin then
@@ -65,8 +65,8 @@ in {
         clojure-lsp
       ];
       # put doom and custom .doom.d/bin/ on path
-      sessionPath = [
-        "${config.xdg.configHome}/emacs/bin"
+      sessionPath = lib.mkAfter [
+        "${config.home.homeDirectory}/.config/emacs/bin"
         "${config.home.homeDirectory}/.doom.d/bin"
       ];
       sessionVariables = {
@@ -86,10 +86,7 @@ in {
       "doom.d".source = config.lib.file.mkOutOfStoreSymlink
         "${config.home.homeDirectory}/.doom.d";
       "emacs" = {
-        source = builtins.fetchGit {
-          url = "https://github.com/doomemacs/doomemacs";
-          rev = "5b5b170f7902e81826fd8efbec88eb38e23e2807";
-        };
+        source = inputs.doomemacs;
         # rev bumps will make doom sync run
         onChange = "${pkgs.writeShellScript "doom-change" ''
           # where your .doom.d files go
