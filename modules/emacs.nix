@@ -18,8 +18,7 @@ let
         })
       ];
     })).override {
-      # TODO wait for https://github.com/NixOS/nixpkgs/issues/395169
-      withNativeCompilation = false;
+      withNativeCompilation = true;
     }
   else
     pkgs.emacs30-pgtk;
