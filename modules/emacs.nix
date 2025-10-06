@@ -18,7 +18,8 @@ let
         })
       ];
     })).override {
-      withNativeCompilation = true;
+      # TODO still not working on macos
+      withNativeCompilation = pkgs.stdenv.isLinux;
     }
   else
     pkgs.emacs30-pgtk;
