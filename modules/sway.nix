@@ -340,6 +340,8 @@ in {
             '';
             p = ''
               exec grim -g "$(slurp -p)" -t ppm - | convert - -format '%[pixel:p{0,0}]' txt:- \
+                  | grep -oE "#[0-9a-fAF]+" \
+                  | wl-copy \
                 ; mode default
             '';
             Escape = ''mode "default"'';
