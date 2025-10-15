@@ -324,17 +324,17 @@ in {
         modes = {
           "Screenshot: (s)election|(d)isplay|(w)indow|(p)ixel value" = {
             s = ''
-              exec wl-copy < $(grimshot save area \
+              exec wl-copy < $(grimshot --notify save area \
                   $HOME/Dropbox/Screenshots/$(date +"%Y-%m-%dT%H:%M:%SZ_grim.png")) \
                 ; mode default
             '';
             d = ''
-              exec wl-copy < $(grimshot save output \
+              exec wl-copy < $(grimshot --notify save output \
                   $HOME/Dropbox/Screenshots/$(date +"%Y-%m-%dT%H:%M:%SZ_grim.png")) \
                 ; mode default
             '';
             w = ''
-              exec wl-copy < $(grimshot save window \
+              exec wl-copy < $(grimshot --notify save window \
                   $HOME/Dropbox/Screenshots/$(date +"%Y-%m-%dT%H:%M:%SZ_grim.png")) \
                 ; mode default
             '';
