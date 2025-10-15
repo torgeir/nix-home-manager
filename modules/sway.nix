@@ -43,6 +43,7 @@ in {
       slurp
       sway-contrib.grimshot
       swayimg
+      wl-clipboard
 
       # notifications
       mako
@@ -323,18 +324,18 @@ in {
         modes = {
           "Screenshot: (s)election|(d)isplay|(w)indow|(p)ixel value" = {
             s = ''
-              exec grimshot save area \
-                  $HOME/Dropbox/Screenshots/$(date +"%Y-%m-%dT%H:%M:%SZ_grim.png") \
+              exec wl-copy < $(grimshot save area \
+                  $HOME/Dropbox/Screenshots/$(date +"%Y-%m-%dT%H:%M:%SZ_grim.png")) \
                 ; mode default
             '';
             d = ''
-              exec grimshot save output \
-                  $HOME/Dropbox/Screenshots/$(date +"%Y-%m-%dT%H:%M:%SZ_grim.png") \
+              exec wl-copy < $(grimshot save output \
+                  $HOME/Dropbox/Screenshots/$(date +"%Y-%m-%dT%H:%M:%SZ_grim.png")) \
                 ; mode default
             '';
             w = ''
-              exec grimshot save window \
-                  $HOME/Dropbox/Screenshots/$(date +"%Y-%m-%dT%H:%M:%SZ_grim.png") \
+              exec wl-copy < $(grimshot save window \
+                  $HOME/Dropbox/Screenshots/$(date +"%Y-%m-%dT%H:%M:%SZ_grim.png")) \
                 ; mode default
             '';
             p = ''
