@@ -11,8 +11,12 @@ in {
   config = lib.mkIf cfg.enable {
     programs.git = {
       enable = true;
-      userName = "torgeir";
-      userEmail = "torgeir.thoresen@gmail.com";
+      settings = {
+        user = {
+          name = "torgeir";
+          email = "torgeir.thoresen@gmail.com";
+        };
+      };
     };
 
     home.packages = with pkgs; [ cfg.ghPackage delta difftastic ];
