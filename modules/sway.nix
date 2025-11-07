@@ -106,8 +106,8 @@ in {
           {
             command = ''
               exec swayidle -w \
-                timeout 600 'swaylock -f -c 000000' \
-                timeout 700 'swaymsg "output * dpms off"' \
+                timeout 1000 'swaylock -f -c 000000' \
+                timeout 1100 'swaymsg "output * dpms off"' \
                 resume 'swaymsg "output * dpms on"' \
                 before-sleep 'swaylock -f -c 000000'
             '';
