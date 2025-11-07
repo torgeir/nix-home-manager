@@ -20,7 +20,6 @@ in {
     };
 
     home.file = if pkgs.stdenv.isDarwin then {
-      "bin/alacritty-open".source = dotfiles + "/alacritty-open";
       ".config/alacritty/main.toml".source = dotfiles
         + "/config/alacritty/main.toml";
       ".config/alacritty/alacritty-dark.toml".source = dotfiles
@@ -64,5 +63,46 @@ in {
       ".config/alacritty/main.toml".source = dotfiles
         + "/config/alacritty/main.toml";
     };
+
+    home.packages = [
+      (pkgs.writeShellScriptBin "alacritty-open" ''
+        input="$1"
+        # detekt output /absolute/path/file:123:1
+        if [[ $input =~ (.*):([0-9]+):([0-9]+): ]]; then
+          file_path="''${BASH_REMATCH[1]}"
+          line_number="''${BASH_REMATCH[2]}"
+          column="''${BASH_REMATCH[3]}"
+          encoded_path=$(echo "$file_path" | sed 's/ /%20/g')
+          open "idea://open?file=$encoded_path&line=$line_number&column=$column"
+        else
+          echo "Error: Dunno how to open, could not parse the input, got: $input"
+          exit 1
+        fi
+      '')
+
+      (pkgs.writeShellScriptBin "alacritty-open-folder" ''
+        case $(uname) in
+          Linux)
+            thunar "$1"
+            swaymsg "[app_id=thunar]" focus
+            ;;
+          Darwin)
+            open -a Finder -- "$1"
+            ;;
+        esac
+      '')
+
+      (pkgs.writeShellScriptBin "alacritty-open-url" ''
+        case $(uname) in
+          Linux)
+            xdg-open "$1"
+            ;;
+          Darwin)
+            open -a Firefox\ Developer\ Edition -- "$1"
+            ;;
+        esac
+      '')
+    ];
   };
+
 }
