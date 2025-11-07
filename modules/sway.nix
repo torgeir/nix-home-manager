@@ -182,10 +182,17 @@ in {
           meta = "Mod1";
           mod = "Mod4";
           swayfocus = pkgs.writeShellScript "swayfocus.sh" ''
+            #!/usr/bin/env bash
             id=$(swaymsg -rt get_workspaces \
-                | jq ".[] | select(.representation | contains(\"$1\")) | .focus[0]" \
-                | head -n 1)
-            swaymsg "[con_id=$id]" focus
+              | jq ".[] | select(.representation | contains(\"$1\")) | .focus[0]" \
+              | head -n 1)
+
+            if [ -n "$id" ]; then
+              swaymsg "[con_id=$id] focus"
+            else
+              lowercase_prog="$(echo $1 | tr '[:upper:]' '[:lower:]')"
+              exec "$lowercase_prog"
+            fi
           '';
         in {
           # quick run
