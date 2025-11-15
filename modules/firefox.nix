@@ -59,6 +59,10 @@ in {
 
           # no pocket
           "extensions.pocket.enabled" = false;
+
+          # visible scrollbar
+          "widget.non-native-theme.gtk.scrollbar.thumb-size" = .8;
+          "widget.non-native-theme.scrollbar.size.override" = 30;
         };
         # https://github.com/nix-community/home-manager/blob/master/modules/programs/firefox.nix
         userChrome = ''
