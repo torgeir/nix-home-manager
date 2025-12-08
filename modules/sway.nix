@@ -100,7 +100,6 @@ in {
       config = {
         modifier = "Mod4";
         terminal = terminal;
-        assigns = { "workspace 1" = [{ app_id = browser; }]; };
         startup = [
           { command = browser; }
           {
