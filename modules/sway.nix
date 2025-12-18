@@ -67,6 +67,7 @@ in {
     home.file.".config/bg.jpg".source = dotfiles + "/bg.jpg";
     home.file.".config/mako".source = dotfiles + "/config/mako";
     home.file.".config/dunst".source = dotfiles + "/config/dunst";
+    home.file.".config/thunar".source = dotfiles + "/config/thunar";
     home.file.".config/i3status-rust".source = dotfiles
       + "/config/i3status-rust";
     home.file.".config/sway/keymap".source = ./config/sway/xkb/symbols/custom;
