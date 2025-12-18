@@ -32,7 +32,7 @@ in {
         eza
         fd
         bat
-        joshuto
+        yazi
         gawk
         htop
         btop
