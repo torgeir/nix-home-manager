@@ -32,6 +32,7 @@ in {
         eza
         fd
         bat
+        joshuto
         gawk
         htop
         btop
