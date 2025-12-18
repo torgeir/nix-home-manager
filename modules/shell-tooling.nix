@@ -41,6 +41,8 @@ in {
     home.file.".config/btop".source = dotfiles + "/config/btop";
     home.file.".config/bat".source = dotfiles + "/config/bat";
 
+    home.file.".config/yazi".source = dotfiles + "/config/yazi";
+
     # zsh
     home.file.".zsh".source = dotfiles + "/zsh/";
     home.file.".zshrc".source = dotfiles + "/zshrc";
