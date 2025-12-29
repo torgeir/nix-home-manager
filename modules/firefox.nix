@@ -68,6 +68,7 @@ in {
         userChrome = ''
           #TabsToolbar    { visibility: collapse !important; }
           #sidebar-header { visibility: collapse !important; }
+          #urlbar-zoom-button { display: block; }
         '';
         #https://github.com/montchr/dotfield/blob/78de8ff316ccb2d34fd98cd9bfd3bfb5ad775b0e/home/profiles/firefox/search/default.nix
         search.force = true;
