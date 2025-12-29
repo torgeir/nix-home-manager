@@ -33,16 +33,16 @@ in {
     pname = "darkreader";
     version = "4.9.110";
     id = "addon@darkreader.org";
-    url = "https://addons.mozilla.org/firefox/downloads/file/4535824/darkreader-4.9.110.xpi";
-    sha256 = "1p1hmrpqcnx8p218c8m148rz1z3n40xlk03lb441mk3hcj14aql4";
+    url = "https://addons.mozilla.org/firefox/downloads/file/4638146/darkreader-4.9.118.xpi";
+    sha256 = "154k9hn7ak8x0kvvxvdj4p7q0lkn03rp4n4sxnfy2pjlhh7dmlk9";
   };
 
   ublock-origin = buildExtension rec {
     pname = "ublock-origin";
     version = "1.65.0";
     id = "uBlock0@raymondhill.net";
-    url = "https://addons.mozilla.org/firefox/downloads/file/4578681/ublock_origin-1.66.4.xpi";
-    sha256 = "1c3z0ww46xcc370rlb3g8q41hjxx5csqjhwnd0ajy8810s9wsqmw";
+    url = "https://addons.mozilla.org/firefox/downloads/file/4629131/ublock_origin-1.68.0.xpi";
+    sha256 = "05a3f11dcbdj6s6c70x7hanqrpdv35lia4ia490qh0clljylmbsw";
   };
 
   # ! name has -, filename has _
@@ -50,24 +50,24 @@ in {
     pname = "1password-x-password-manager";
     version = "8.11.8.40.";
     id = "{d634138d-c276-4fc8-924b-40a0ea21d284}";
-    url = "https://addons.mozilla.org/firefox/downloads/file/4588819/1password_x_password_manager-8.11.12.27.xpi";
-    sha256 = "18x3vsxwnj15bk5wbpkhqjygriyqgxmvxqzz9hqi5k27ix2qap23";
+    url = "https://addons.mozilla.org/firefox/downloads/file/4644396/1password_x_password_manager-8.11.23.2.xpi";
+    sha256 = "1kc6278qdyj2zcrsip38rpy8cf9dmd54jrfhz5fbs4rhyhp7hjiv";
   };
 
   vimium-ff = buildExtension rec {
     pname = "vimium-ff";
     version = "2.3";
     id = "{d7742d87-e61d-4b78-b8a1-b469842139fa}";
-    url = "https://addons.mozilla.org/firefox/downloads/file/4524018/vimium_ff-2.3.xpi";
-    sha256 = "16wfc19maics36b7wm37fh9h8n9m8xzpmj45p80axix1dcpw1a9x";
+    url = "https://addons.mozilla.org/firefox/downloads/file/4618554/vimium_ff-2.3.1.xpi";
+    sha256 = "0wqlb4iik74h1jilkif20zl6br3l3rfvjq2fdsic4f8rnhf8c6rc";
   };
 
   multi-account-containers = buildExtension rec {
     pname = "multi-account-containers";
     version = "8.3.0";
     id = "@testpilot-containers";
-    url = "https://addons.mozilla.org/firefox/downloads/file/4494279/multi_account_containers-8.3.0.xpi";
-    sha256 = "0c422f62y8yp79q5irpp9574h3nsyq5jb92plip2a4spq3lqhy6g";
+    url = "https://addons.mozilla.org/firefox/downloads/file/4627302/multi_account_containers-8.3.6.xpi";
+    sha256 = "0jnk4k8nr33sr9z8gkn4izxvlajak5zr47cz8ikg3v2bhidy6gdz";
   };
 
   firefox-color = buildExtension rec {
@@ -82,16 +82,16 @@ in {
     pname = "tree-style-tab";
     version = "4.2.5";
     id = "treestyletab@piro.sakura.ne.jp";
-    url = "https://addons.mozilla.org/firefox/downloads/file/4583182/tree_style_tab-4.2.6.xpi";
-    sha256 = "1yaixz2dssv8sbzlk90p0jjc91yxrn7w7l94dwkbjvg2szn9x61z";
+    url = "https://addons.mozilla.org/firefox/downloads/file/4602712/tree_style_tab-4.2.7.xpi";
+    sha256 = "06q26yd2smv5rb9x7g4r3z206g8vj795pqlcjqjsp22pcf0a73q9";
   };
 
   sidebery = buildExtension rec {
     pname = "sidebery";
     version = "5.3.3";
     id = "{3c078156-979c-498b-8990-85f7987dd929}";
-    url = "https://addons.mozilla.org/firefox/downloads/file/4442132/sidebery-5.3.3.xpi";
-    sha256 = "0ss7lzis7x1smjz05f75z9rjfhix3g6kx517bywxddwkbwqaiyd4";
+    url = "https://addons.mozilla.org/firefox/downloads/file/4613339/sidebery-5.4.0.xpi";
+    sha256 = "16gm10jhk2wnxpxw167jwqs6s3qjxa5kpipmmy6h2nscvxbk2jhq";
   };
 
 }
