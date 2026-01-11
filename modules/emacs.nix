@@ -50,6 +50,7 @@ in {
 
         # emacs lsp
         nil # nix lsp https://github.com/oxalica/nil
+        nixfmt
 
         # emacs deps
         nodejs_20
