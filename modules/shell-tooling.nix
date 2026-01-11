@@ -130,6 +130,13 @@ in
         newline = true
 
         [[blocks.segments]]
+          type = "session"
+          style = "diamond"
+          foreground = 'yellow'
+          background = 'transparent'
+          template = "{{ if .SSHSession }} {{ .UserName }}@{{ .HostName }}{{ end }}"
+
+        [[blocks.segments]]
           type = 'text'
           style = 'plain'
           foreground_templates = [
