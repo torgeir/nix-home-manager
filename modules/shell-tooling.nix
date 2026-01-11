@@ -130,6 +130,13 @@ in
         newline = true
 
         [[blocks.segments]]
+          type = "session"
+          style = "diamond"
+          foreground = 'yellow'
+          background = 'transparent'
+          template = '{{ if .SSHSession }} {{ .UserName }}<p:red>@</>{{ .HostName }}{{ end }} '
+
+        [[blocks.segments]]
           type = 'text'
           style = 'plain'
           foreground_templates = [
@@ -155,6 +162,7 @@ in
       [palette]
       tooltip-version = "#193549"
       grey = '#333333'
+      red = '#ff5555'
 
       [[tooltips]]
       type = "java"
