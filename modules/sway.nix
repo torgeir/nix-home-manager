@@ -181,6 +181,7 @@ in {
         keybindings = let
           meta = "Mod1";
           mod = "Mod4";
+          hyper = "${meta}+${mod}+Shift+Ctrl";
           swayfocus = pkgs.writeShellScript "swayfocus.sh" ''
             #!/usr/bin/env bash
             id=$(swaymsg -rt get_workspaces \
@@ -213,6 +214,12 @@ in {
           "${meta}+i" = "exec ${swayfocus} ${browser}";
           "${meta}+e" = "exec ${swayfocus} emacs";
           "${meta}+s" = "exec ${swayfocus} Slack";
+
+          "${hyper}+i" = "exec ${swayfocus} ${browser}";
+          "${hyper}+e" = "exec ${swayfocus} emacs";
+          "${hyper}+s" = "exec ${swayfocus} Slack";
+          "${hyper}+t" = "exec ${swayfocus} ${terminal}";
+          "${hyper}+h" = "exec ${swayfocus} ${filemanager}";
 
           # focus arrows
           "${mod}+Up" = "focus up";
