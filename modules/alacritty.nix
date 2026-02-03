@@ -67,8 +67,12 @@ in {
     home.packages = [
       (pkgs.writeShellScriptBin "alacritty-open" ''
         input="$1"
+        # /some/path/file.kt
+        if [[ $input =~ (([^/]+/)*[^.]+\.[^ ]{1,4}) ]]; then 
+          file_path="''${BASH_REMATCH[1]}"
+          /etc/profiles/per-user/torgeir/bin/emacsclient "$file_path"
         # detekt output /absolute/path/file:123:1
-        if [[ $input =~ (.*):([0-9]+):([0-9]+): ]]; then
+        elif [[ $input =~ (.*):([0-9]+):([0-9]+): ]]; then
           file_path="''${BASH_REMATCH[1]}"
           line_number="''${BASH_REMATCH[2]}"
           column="''${BASH_REMATCH[3]}"
