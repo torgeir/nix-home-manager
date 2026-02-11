@@ -78,6 +78,9 @@ in {
         # where doom writes one more file
         DOOMPROFILELOADFILE =
           "${config.xdg.configHome}/doom-local/cache/profile-load.el";
+
+        EDITOR = "emacsclient";
+        VISUAL = "emacsclient";
       };
     };
     xdg.configFile = {
