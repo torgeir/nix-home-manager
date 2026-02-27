@@ -185,7 +185,7 @@ in {
           swayfocus = pkgs.writeShellScript "swayfocus.sh" ''
             #!/usr/bin/env bash
             id=$(swaymsg -rt get_workspaces \
-              | jq ".[] | select(.representation | contains(\"$1\")) | .focus[0]" \
+              | jq ".[] | select((.representation | ascii_downcase) | contains(\"$1\")) | .focus[0]" \
               | head -n 1)
 
             if [ -n "$id" ]; then
