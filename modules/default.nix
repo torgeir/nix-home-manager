@@ -1,4 +1,9 @@
-{ pkgs, lib, isLinux ? false, ... }:
+{
+  pkgs,
+  lib,
+  isLinux ? false,
+  ...
+}:
 
 {
   imports = [
@@ -9,6 +14,6 @@
     ./zoxide.nix
     ./shell-tooling.nix
     ./tmux.nix
-  ] ++ lib.optionals (isLinux) [ ./sway.nix ];
+  ];
 
 }
