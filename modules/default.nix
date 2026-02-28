@@ -8,6 +8,7 @@
 {
   imports = [
     ./alacritty.nix
+    ./ghostty.nix
     ./nvim.nix
     ./git.nix
     ./firefox.nix
