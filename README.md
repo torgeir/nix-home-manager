@@ -23,7 +23,7 @@ in {
   ];
 
   # enable selected modules
-  programs.t-doomemacs.enable = true;
+  programs.t-emacs.enable = true;
   programs.t-nvim.enable = true;
   
 };

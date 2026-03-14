@@ -1,18 +1,13 @@
 {
   description = "torgeir/nix-home-manager";
 
-  inputs = {
-    doomemacs = {
-      url = "github:doomemacs/doomemacs";
-      flake = false;
-    };
-  };
+  inputs = {};
 
-  outputs = inputs@{ self, doomemacs }:
+  outputs = inputs@{ self }:
     {
       homeManagerModules.emacs = { config, lib, pkgs, ... }:
         import ./modules/emacs.nix {
-          inputs = inputs; # doomemacs
+	  inputs = inputs;
           inherit config lib pkgs;
         };
     };
