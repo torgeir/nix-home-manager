@@ -35,7 +35,7 @@ in
             fi
 
             if passphrase=$("''${timeout_cmd[@]}" ${cfg.opCmd} item get keybase.io --format json \
-              | /etc/profiles/per-user/torgeir/bin/jq -j '.fields[] | select(.id == "password") | .value' 2>/dev/null); then
+              | ${pkgs.jq}/bin/jq -j '.fields[] | select(.id == "password") | .value' 2>/dev/null); then
               echo "D $passphrase"
               echo "OK"
               return 0
@@ -65,11 +65,16 @@ in
                 echo "D tty"
                 echo "OK"
                 ;;
+              GETINFO\ ttytype)
+                echo "D dumb"
+                echo "OK"
+                ;;
               OPTION*|SETDESC*|SETPROMPT*|SETTITLE*|SETOK*|SETCANCEL*|SETNOTOK*|SETERROR*|SETREPEAT*|SETREPEATOK*|SETREPEATERROR*|SETQUALITYBAR*|SETQUALITYBAR_T*)
                 echo "OK"
                 ;;
               *)
-                echo "ERR 83886179 Command not supported <Pinentry>"
+                # Be permissive like stock pinentry; some clients probe extra commands.
+                echo "OK"
                 ;;
             esac
           done
