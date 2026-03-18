@@ -31,11 +31,11 @@ in
           get_passphrase_from_1password() {
             local passphrase timeout_cmd=()
             if command -v timeout >/dev/null 2>&1; then
-              timeout_cmd=(${pkgs.coreutils}/bin/timeout 1s)
+              timeout_cmd=(${pkgs.coreutils}/bin/timeout 5s)
             fi
 
             if passphrase=$("''${timeout_cmd[@]}" ${cfg.opCmd} item get keybase.io --format json \
-              | ${pkgs.jq}/bin/jq -j '.fields[] | select(.id == "password") | .value' 2>/dev/null); then
+              | ${pkgs.jq}/bin/jq -j '.fields[] | select(.id == "password") | .value' 2>/dev/null) && [ -n "$passphrase" ]; then
               echo "D $passphrase"
               echo "OK"
               return 0
