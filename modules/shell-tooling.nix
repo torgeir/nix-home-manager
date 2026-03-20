@@ -137,6 +137,13 @@ in
           template = '{{ if .SSHSession }} {{ .UserName }}<p:red>@</>{{ .HostName }}{{ end }} '
 
         [[blocks.segments]]
+          type = 'jobs'
+          style = 'plain'
+          foreground = 'red'
+          background = 'transparent'
+          template = ' {{ .Count }} '
+
+        [[blocks.segments]]
           type = 'text'
           style = 'plain'
           foreground_templates = [
