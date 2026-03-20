@@ -42,7 +42,6 @@ in
       package = (
         (pkgs.emacsPackagesFor emacs).emacsWithPackages (epkgs: [
           epkgs.vterm
-          epkgs.mu4e
           epkgs.pdf-tools
           treesit
         ])
@@ -52,8 +51,7 @@ in
     xdg.enable = true;
     home = {
       packages = with pkgs; [
-        # mu4e+mbsync
-        mu
+        # mbsync
         isync
         msmtp
 
@@ -80,7 +78,6 @@ in
         clojure
         clojure-lsp
       ];
-      # put custom .doom.d/bin/ on path
       sessionPath = lib.mkAfter [
         "${config.home.homeDirectory}/.emacs.d/bin"
       ];
@@ -89,12 +86,7 @@ in
         VISUAL = "emacsclient";
       };
     };
-    xdg.configFile = {
-      # TODO treesitter after removing doom
-      # tree-sitter subdirectory of the directory specified by user-emacs-directory
-      # "doom-local/cache/tree-sitter".source = "${treesit}/lib";
-      # git clone git@github.com:torgeir/.emacs.d.git ~/.doom.d
-      ".emacs.d".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.doom.d";
-    };
+
+    xdg.dataFile."tree-sitter".source = "${treesit}/lib";
   };
 }

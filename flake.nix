@@ -1,13 +1,20 @@
 {
   description = "torgeir/nix-home-manager";
 
-  inputs = {};
+  inputs = { };
 
-  outputs = inputs@{ self }:
+  outputs =
+    inputs@{ self }:
     {
-      homeManagerModules.emacs = { config, lib, pkgs, ... }:
+      homeManagerModules.emacs =
+        {
+          config,
+          lib,
+          pkgs,
+          ...
+        }:
         import ./modules/emacs.nix {
-	  inputs = inputs;
+          inputs = inputs;
           inherit config lib pkgs;
         };
     };
