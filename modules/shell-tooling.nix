@@ -107,8 +107,8 @@ in
 
           [blocks.segments.properties]
             branch_template = '{{ trunc 25 .Branch }}'
-            fetch_status = true
-            fetch_upstream_icon = true
+            fetch_status = false
+            fetch_upstream_icon = false
 
       [[blocks]]
         type = 'rprompt'
