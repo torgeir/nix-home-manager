@@ -66,10 +66,10 @@ in
             "cmd+alt+down=goto_split:down"
             "cmd+alt+up=goto_split:up"
 
-            "ctrl+left=previous_tab"
-            "ctrl+right=next_tab"
-            "ctrl+shift+left=move_tab:-1"
-            "ctrl+shift+right=move_tab:1"
+            "ctrl+alt+left=previous_tab"
+            "ctrl+alt+right=next_tab"
+            "ctrl+alt+shift+left=move_tab:-1"
+            "ctrl+alt+shift+right=move_tab:1"
 
             "super+1=goto_tab:1"
             "super+2=goto_tab:2"
