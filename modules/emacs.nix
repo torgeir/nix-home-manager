@@ -67,11 +67,11 @@ in
 
         # emacs deps
         nodejs_20
-        #nodePackages.prettier
-        #nodePackages.bash-language-server
-        #nodePackages.yaml-language-server
-        #nodePackages.typescript
-        #nodePackages.typescript-language-server
+        prettier
+        bash-language-server
+        yaml-language-server
+        typescript
+        typescript-language-server
         shellcheck
 
         babashka
