@@ -81,10 +81,14 @@ in
       sessionPath = lib.mkAfter [
         "${config.home.homeDirectory}/.emacs.d/bin"
       ];
-      sessionVariables = {
-        EDITOR = "emacsclient";
-        VISUAL = "emacsclient";
-      };
+      sessionVariables =
+        let
+          home = config.home.homeDirectory;
+        in
+        {
+          EDITOR = "emacsclient --socket-name ${home}/.emacs.d/server/server";
+          VISUAL = "emacsclient --socket-name ${home}/.emacs.d/server/server";
+        };
     };
 
     xdg.dataFile."tree-sitter".source = "${treesit}/lib";
