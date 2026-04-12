@@ -1,19 +1,30 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
-let cfg = config.programs.t-nvim;
-in {
+let
+  cfg = config.programs.t-nvim;
+in
+{
 
-  options.programs.t-nvim.enable =
-    lib.mkEnableOption "Enable nvim configuration.";
+  options.programs.t-nvim.enable = lib.mkEnableOption "Enable nvim configuration.";
 
   config = lib.mkIf cfg.enable {
 
-    home.file = { ".vimrc".source = ./config/vim/vimrc; };
+    home.file = {
+      ".vimrc".source = ./config/vim/vimrc;
+    };
 
     # https://github.com/stefanDeveloper/nixos-lenovo-config/blob/master/modules/apps/editor/vim.nix
     programs.neovim = {
 
       enable = true;
+
+      withRuby = false;
+      withPython3 = false;
 
       # alias vim=nvim
       vimAlias = true;
@@ -29,6 +40,7 @@ in {
 
         {
           plugin = lightline-vim;
+          type = "viml";
           config = ''
             source ${./config/vim/lightline.vim}
             let g:lightline = {'colorscheme': 't'}
@@ -45,6 +57,7 @@ in {
 
         {
           plugin = nerdtree;
+          type = "viml";
           config = ''
             nnoremap <leader>fl :NERDTreeToggle<cr>
             nnoremap <leader>fL :NERDTreeFind<cr>
@@ -53,6 +66,7 @@ in {
         }
         {
           plugin = fzf-vim;
+          type = "viml";
           config = ''
             " let $FZF_DEFAULT_COMMAND = "fd --type f --hidden -E '.git'"
             nnoremap <leader>t  :FZF<cr>
