@@ -77,6 +77,8 @@ in
       final_space = true
       console_title_template = '{{ .Shell }} in {{ .Folder }}'
       tooltips_action = "extend" # replace
+      notice = false
+      auto = false
 
       [[blocks]]
         type = 'prompt'
