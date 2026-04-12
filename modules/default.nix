@@ -16,6 +16,7 @@
     ./zoxide.nix
     ./shell-tooling.nix
     ./tmux.nix
+    ./zellij.nix
   ];
 
 }

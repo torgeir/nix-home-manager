@@ -66,8 +66,8 @@ in
             "cmd+alt+down=goto_split:down"
             "cmd+alt+up=goto_split:up"
 
-            "ctrl+alt+left=previous_tab"
-            "ctrl+alt+right=next_tab"
+            "ctrl+shift+tab=previous_tab"
+            "ctrl+tab=next_tab"
             "ctrl+alt+shift+left=move_tab:-1"
             "ctrl+alt+shift+right=move_tab:1"
 
