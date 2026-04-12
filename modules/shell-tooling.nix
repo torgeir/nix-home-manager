@@ -139,11 +139,11 @@ in
           template = '{{ if .SSHSession }} {{ .UserName }}<p:red>@</>{{ .HostName }}{{ end }} '
 
         [[blocks.segments]]
-          type = 'jobs'
+          type = 'text'
           style = 'plain'
           foreground = 'red'
           background = 'transparent'
-          template = ' {{ .Count }} '
+          template = '{{ if ne .Env.OMP_JOB_COUNT "0" }}{{ .Env.OMP_JOB_COUNT }} {{ end }}'
 
         [[blocks.segments]]
           type = 'text'
@@ -247,6 +247,7 @@ in
         prompt_t_npm
         prompt_t_java
         prompt_t_git
+        export OMP_JOB_COUNT=''${#jobstates}
       }
     '';
 
