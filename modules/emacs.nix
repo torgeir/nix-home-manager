@@ -67,7 +67,7 @@ in
 
         # emacs deps
         nodejs_20
-        prettier
+        #prettier
         bash-language-server
         yaml-language-server
         typescript
