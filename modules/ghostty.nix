@@ -89,6 +89,8 @@ in
             "alt+a=esc:a"
             "alt+b=esc:b"
             "alt+f=esc:f"
+
+            "ctrl+shift+slash=text:\x1f"
           ];
         };
     };
