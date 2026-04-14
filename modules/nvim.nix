@@ -1,22 +1,14 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ config, lib, pkgs, ... }:
 
-let
-  cfg = config.programs.t-nvim;
-in
-{
+let cfg = config.programs.t-nvim;
+in {
 
-  options.programs.t-nvim.enable = lib.mkEnableOption "Enable nvim configuration.";
+  options.programs.t-nvim.enable =
+    lib.mkEnableOption "Enable nvim configuration.";
 
   config = lib.mkIf cfg.enable {
 
-    home.file = {
-      ".vimrc".source = ./config/vim/vimrc;
-    };
+    home.file = { ".vimrc".source = ./config/vim/vimrc; };
 
     # https://github.com/stefanDeveloper/nixos-lenovo-config/blob/master/modules/apps/editor/vim.nix
     programs.neovim = {
@@ -35,8 +27,13 @@ in
       plugins = with pkgs.vimPlugins; [
         editorconfig-vim
 
-        # https://www.google.com/search?client=firefox-b-d&q=nvim-catppuccin
-        catppuccin-nvim
+        {
+          plugin = catppuccin-nvim;
+          type = "lua";
+          config = ''
+            vim.cmd.colorscheme "catppuccin-mocha"
+          '';
+        }
 
         {
           plugin = lightline-vim;
@@ -68,7 +65,7 @@ in
           plugin = fzf-vim;
           type = "viml";
           config = ''
-            " let $FZF_DEFAULT_COMMAND = "fd --type f --hidden -E '.git'"
+            "let $FZF_DEFAULT_COMMAND = "fd --type f --hidden -E '.git'"
             nnoremap <leader>t  :FZF<cr>
             nnoremap <leader>sp :Rg<cr>
             nnoremap <leader>,  :Buffers<cr>
@@ -77,9 +74,9 @@ in
             nnoremap <leader>ss :BLines<cr>
             nnoremap <leader>bB :Windows<cr>
             nnoremap <leader>ff :Files<cr>
-            nnoremap <leader>ht :Colors<cr>
-            nnoremap <leader>hh :Helptags<cr>
             nnoremap <leader>gg :Changes<cr>
+            nnoremap <leader>hh :Helptags<cr>
+            nnoremap <leader>tt :Colors<cr>
             nnoremap <leader>gl :Commits<cr>
             nnoremap <leader>oT :terminal<cr>
 
