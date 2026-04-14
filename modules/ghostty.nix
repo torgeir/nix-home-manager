@@ -85,6 +85,10 @@ in
             "alt+down=esc:e"
             "alt+left=esc:b"
             "alt+right=esc:f"
+
+            "alt+a=esc:a"
+            "alt+b=esc:b"
+            "alt+f=esc:f"
           ];
         };
     };
