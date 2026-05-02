@@ -12,6 +12,22 @@ in {
       "pkgs.firefox-bin, pkgs.firefox-devedition-bin or pkgs.firefox-nightly-bin";
   };
 
+  options.programs.t-firefox.configPath = lib.mkOption {
+      type = lib.types.str;
+      default = ".mozilla/firefox";
+      description = ''
+        torgeir profile: The default value of `programs.firefox.configPath` has changed from `".mozilla/firefox"` to "''${config.xdg.configHome}/mozilla/firefox"`.
+        You are currently using the legacy default (`".mozilla/firefox"`) because `home.stateVersion` is less than "26.05".
+        To silence this warning and keep legacy behavior, set:
+          programs.firefox.configPath = ".mozilla/firefox";
+        To adopt the new default behavior, set:
+          programs.firefox.configPath = "''${config.xdg.configHome}/mozilla/firefox";
+
+        To migrate to the XDG path, move `~/.mozilla/firefox` to
+        `$XDG_CONFIG_HOME/mozilla/firefox` and remove the old directory.
+        '';
+    };
+
   options.programs.t-firefox.legacyExtensions = lib.mkOption {
       type = lib.types.bool;
       default = true;
@@ -42,6 +58,7 @@ in {
       # https://github.com/bandithedoge/nixpkgs-firefox-darwin/blob/main/overlay.nix
       # https://github.com/notohh/snowflake/blob/master/home/firefox/default.nix
       package = cfg.package;
+      configPath = cfg.configPath;
       # open -na Firefox
       profiles.torgeir = {
         id = 0;
