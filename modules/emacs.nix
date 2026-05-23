@@ -86,8 +86,9 @@ in
           home = config.home.homeDirectory;
         in
         {
-          EDITOR = "emacsclient --socket-name ${home}/.emacs.d/server/server";
-          VISUAL = "emacsclient --socket-name ${home}/.emacs.d/server/server";
+          EDITOR = "emacsclient";
+          VISUAL = "emacsclient";
+          EMACS_SOCKET_NAME = "${home}/.emacs.d/server/server";
         };
     };
 
