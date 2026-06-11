@@ -28,7 +28,7 @@ let
           withNativeCompilation = pkgs.stdenv.isLinux;
         }
     else
-      pkgs.emacs30-pgtk;
+      pkgs.emacs-pgtk;
   treesit = (pkgs.emacsPackagesFor emacs).treesit-grammars.with-all-grammars;
 in
 {
@@ -66,7 +66,7 @@ in
         graphviz
 
         # emacs deps
-        nodejs_20
+        (if pkgs.stdenv.isDarwin then nodejs_22 else nodejs_26)
         #prettier
         bash-language-server
         yaml-language-server
