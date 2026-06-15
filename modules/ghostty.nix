@@ -86,11 +86,10 @@ in
             "alt+left=esc:b"
             "alt+right=esc:f"
 
-            "alt+a=esc:a"
-            "alt+b=esc:b"
-            "alt+f=esc:f"
+            "macos-option-as-alt=left"
 
             "ctrl+shift+slash=text:\x1f"
+
           ];
         };
     };
