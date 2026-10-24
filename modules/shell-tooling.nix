@@ -184,7 +184,7 @@ in {
       template = "{{ .Env.OMP_GIT_VERSION }}"
 
       [tooltips.properties]
-      fetch_status = true
+      fetch_status = false
       fetch_upstream_icon = true
     '';
 
