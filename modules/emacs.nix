@@ -18,7 +18,7 @@ let
             sha256 = "+z/KfsBm1lvZTZNiMbxzXQGRTjkCFO4QPlEK35upjsE=";
           })
           (pkgs.fetchpatch {
-            url = "https://raw.githubusercontent.com/d12frosted/homebrew-emacs-plus/master/patches/emacs-30/round-undecorated-frame.patch";
+            url = "https://raw.githubusercontent.com/d12frosted/homebrew-emacs-plus/e98ed093f5f007dc3bb2a9bcba3087286feda27f/patches/emacs-30/round-undecorated-frame.patch";
             sha256 = "uYIxNTyfbprx5mCqMNFVrBcLeo+8e21qmBE3lpcnd+4=";
           })
         ];
