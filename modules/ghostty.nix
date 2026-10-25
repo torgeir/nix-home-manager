@@ -22,7 +22,7 @@ in
 
     # start the single-instance at login, managed so it doesn't dangle after gc
     xdg.configFile."systemd/user/graphical-session.target.wants/app-com.mitchellh.ghostty.service" =
-      lib.mkIf pkgs.stdenv.isLinux {
+      lib.mkIf pkgs.stdenv.hostPlatform.isLinux {
         source = "${cfg.package}/share/systemd/user/app-com.mitchellh.ghostty.service";
       };
 
@@ -95,7 +95,7 @@ in
             "ctrl+shift+slash=text:\\x1f"
           ];
         }
-        // lib.optionalAttrs pkgs.stdenv.isDarwin {
+        // lib.optionalAttrs pkgs.stdenv.hostPlatform.isDarwin {
           # make option send alt, for alt+a/b/f in the shell
           macos-option-as-alt = "left";
         };
