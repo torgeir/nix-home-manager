@@ -86,7 +86,7 @@ in
             "alt+left=esc:b"
             "alt+right=esc:f"
 
-            "ctrl+shift+slash=text:\x1f"
+            "ctrl+shift+slash=text:\\x1f"
           ];
         }
         // lib.optionalAttrs pkgs.stdenv.isDarwin {
