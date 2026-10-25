@@ -86,11 +86,12 @@ in
             "alt+left=esc:b"
             "alt+right=esc:f"
 
-            "macos-option-as-alt=left"
-
             "ctrl+shift+slash=text:\x1f"
-
           ];
+        }
+        // lib.optionalAttrs pkgs.stdenv.isDarwin {
+          # make option send alt, for alt+a/b/f in the shell
+          macos-option-as-alt = "left";
         };
     };
   };
