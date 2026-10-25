@@ -20,6 +20,12 @@ in
 
   config = lib.mkIf cfg.enable {
 
+    # start the single-instance at login, managed so it doesn't dangle after gc
+    xdg.configFile."systemd/user/graphical-session.target.wants/app-com.mitchellh.ghostty.service" =
+      lib.mkIf pkgs.stdenv.isLinux {
+        source = "${cfg.package}/share/systemd/user/app-com.mitchellh.ghostty.service";
+      };
+
     programs.ghostty = {
       enable = true;
       package = cfg.package;
